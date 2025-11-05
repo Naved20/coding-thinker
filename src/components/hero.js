@@ -1,0 +1,113 @@
+import React, { useState, useEffect } from 'react';
+
+const Hero = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [hoveredIcon, setHoveredIcon] = useState(null);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  const techIcons = [
+    { id: 1, label: 'React', icon: '⚛️' },
+    { id: 2, label: 'Vue', icon: '💚' },
+    { id: 3, label: 'Angular', icon: '🅰️' },
+    { id: 4, label: 'Svelte', icon: '🔥' },
+    { id: 5, label: 'Next', icon: '▲' },
+    { id: 6, label: 'Nuxt', icon: '💚' }
+  ];
+
+
+  return (
+    <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-black text-white overflow-hidden">
+{/* Left VS Code-style code window */}
+<div className="absolute left-0 top-0  h-2/5 w-3/3  ">
+  <div className="h-full  border-b-2  border-l-1 border-gray-700 rounded-2xl bg-gray-900/30 opacity-50 backdrop-blur-sm shadow-lg overflow-hidden">
+    {/* Code content */}
+    <div className="flex flex-col font-mono text-xs text-gray-300 leading-5 p-3 opacity-50">
+      <div className="flex gap-2"><span className="text-gray-500 w-6">01</span><span className="text-green-400">const</span> hero = {'{'} animation: true {'}'};</div>
+      <div className="flex gap-2 ml-4"><span className="text-gray-500 w-6">02</span><span className="text-purple-400">interface</span> UX {'{'} animation: boolean {'}'};</div>
+      <div className="flex gap-2"><span className="text-gray-500 w-6">03</span>function renderComponent() {'{'}</div>
+      <div className="flex gap-2 ml-4"><span className="text-gray-500 w-6">04</span>return <span className="text-blue-400">component</span>;</div>
+      <div className="flex gap-2"><span className="text-gray-500 w-6">05</span>{'}'}</div>
+      <div className="flex gap-2"><span className="text-gray-500 w-6">06</span>export default hero;</div>
+      <div className="flex gap-2"><span className="text-gray-500 w-6">07</span>import React, {'{'} useState {'}'} from 'react';</div>
+      <div className="flex gap-2"><span className="text-gray-500 w-6">08</span>const [state, setState] = useState(null);</div>
+    </div>
+  </div>
+</div>
+
+{/* Right VS Code-style code window */}
+<div className="absolute right-0 top-0 h-2/5 w-3/3 ">
+  <div className="h-full w-full border-b-2 border-gray-700 rounded-2xl bg-gray-900/30 opacity-50 backdrop-blur-sm shadow-lg overflow-hidden">
+
+    <div className="flex flex-col font-mono text-xs text-gray-300 leading-5 p-3 opacity-50 text-right">
+      <div className="flex justify-end gap-2"><span className="text-green-400">const</span> hero = {'{'} animation: true {'}'};</div>
+      <div className="flex justify-end gap-2 mr-4"><span className="text-purple-400">interface</span> UX {'{'} animation: boolean {'}'}</div>
+      <div className="flex justify-end gap-2">function renderComponent() {'{'}</div>
+      <div className="flex justify-end gap-2 mr-4">return <span className="text-blue-400">component</span>;</div>
+      <div className="flex justify-end gap-2">{'}'}</div>
+      <div className="flex justify-end gap-2">export default hero;</div>
+      <div className="flex justify-end gap-2">import React, {'{'} useState {'}'} from 'react';</div>
+      <div className="flex justify-end gap-2">const [state, setState] = useState(null);</div>
+    </div>
+  </div>
+</div>
+
+
+      {/* Top badge */}
+      <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-10">
+        <div className={`bg-blue-600 px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
+          <span className="text-xs bg-white text-blue-600 px-2 py-0.5 rounded-full font-bold">NEW</span>
+          <span>v1.2 Beta is available</span>
+        </div>
+      </div>
+
+      {/* Main content */}
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
+
+        {/* Hero text */}
+        <div className="text-center max-w-5xl mb-12">
+          <h1 className={`text-6xl md:text-7xl lg:text-8xl font-bold mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            Simplify and optimize
+          </h1>
+          <h2 className={`text-6xl md:text-7xl lg:text-8xl font-light italic mb-8 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            your user experience.
+          </h2>
+        </div>
+
+        {/* Tech icons */}
+        <div className={`flex items-center gap-4 mb-12 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          {techIcons.map((tech, index) => (
+            <div
+              key={tech.id}
+              className="w-12 h-12 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110 hover:bg-gray-700/50 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/20 relative"
+              style={{ animationDelay: `${index * 100}ms`, animation: isVisible ? 'fadeInUp 0.6s ease-out forwards' : 'none' }}
+              onMouseEnter={() => setHoveredIcon(tech.id)}
+              onMouseLeave={() => setHoveredIcon(null)}
+            >
+              <span className="text-2xl">{tech.icon}</span>
+              {hoveredIcon === tech.id && (
+                <div className="absolute mt-16 bg-gray-800 px-2 py-1 rounded text-sm">{tech.label}</div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* CTA buttons */}
+        <div className={`flex items-center gap-4 mb-20 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <button className="px-8 py-3.5 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30 active:scale-95">
+            Login
+          </button>
+          <button className="px-8 py-3.5 bg-gray-800/50 hover:bg-gray-700/50 backdrop-blur-sm border border-gray-700/50 hover:border-gray-600 rounded-lg font-semibold transition-all duration-300 hover:scale-105 active:scale-95">
+            Register Now
+          </button>
+        </div>
+      </div>
+
+
+    </div>
+  );
+};
+
+export default Hero;

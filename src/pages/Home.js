@@ -1,13 +1,13 @@
 import React from 'react';
 import HeroSection from '../components/HeroSection';
+import Hero from '../components/hero';
 
 
 function Home() {
   return (
     <main>
         <HeroSection />
-        <HeroSection />
-        <HeroSection />
+        <Hero />
         <HeroSection />
     </main>
   );
