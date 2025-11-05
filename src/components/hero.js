@@ -19,9 +19,9 @@ const Hero = () => {
 
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-black text-white overflow-hidden">
+    <div className="relative bg-black text-white overflow-hidden ">
 {/* Left VS Code-style code window */}
-<div className="absolute left-0 top-0  h-2/5 w-3/3  ">
+<div className="absolute left-0 top-0  h-2/5 w-3/3">
   <div className="h-full  border-b-2  border-l-1 border-gray-700 rounded-2xl bg-gray-900/30 opacity-50 backdrop-blur-sm shadow-lg overflow-hidden">
     {/* Code content */}
     <div className="flex flex-col font-mono text-xs text-gray-300 leading-5 p-3 opacity-50">
@@ -64,7 +64,7 @@ const Hero = () => {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
+      <div className="relative z-10 flex flex-col items-center justify-start min-h-screen px-4 pt-32">
 
         {/* Hero text */}
         <div className="text-center max-w-5xl mb-12">
@@ -96,12 +96,12 @@ const Hero = () => {
 
         {/* CTA buttons */}
         <div className={`flex items-center gap-4 mb-20 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <button className="px-8 py-3.5 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30 active:scale-95">
-            Login
-          </button>
-          <button className="px-8 py-3.5 bg-gray-800/50 hover:bg-gray-700/50 backdrop-blur-sm border border-gray-700/50 hover:border-gray-600 rounded-lg font-semibold transition-all duration-300 hover:scale-105 active:scale-95">
-            Register Now
-          </button>
+            <a href="#" className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-2 lg:px-7 lg:py-3 text-2xl md:text-xl font-medium transition-all duration-200 hover:bg-white/20 hover:backdrop-blur-lg rounded-xl shadow-lg">
+              Login
+            </a>
+            <a href="#" className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-4 py-2 lg:px-7 lg:py-3 rounded-xl text-2xl md:text-xl font-medium hover:from-cyan-600 hover:to-blue-600 transition-all duration-200 shadow-lg hover:shadow-cyan-500/25">
+              Register Now
+            </a>
         </div>
       </div>
 
